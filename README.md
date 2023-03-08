@@ -1,6 +1,7 @@
 # DistroBoot
 this time written in windows forms.
 
+App written to help decide which linux is for you. It downloads about 90 completely different flavors of linux, and then you can test them out in a small but quick virtual environment. best of all it's free. As is this little app. Nobody should ever charge for a service like this. 
 for example Xiaopan. They deliver a zipped iso file. 
 ![image](https://user-images.githubusercontent.com/77209365/223823595-f1ec6f05-1add-437c-889c-ca9cc3f19b8c.png)
 
