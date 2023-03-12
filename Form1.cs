@@ -11,25 +11,30 @@ namespace WinFormsDistroboot
     public partial class Distroboot : Form
     {
 
-        int hWnd = 0;
+        IntPtr hWnd = 0;
         [DllImport("user32.dll", EntryPoint = "ShowWindow")]
         private static extern int ShowWindow(int hwnd, int nCmdShow);
         private const int SW_HIDE = 0;
         private const int SW_SHOW = 5;
-
-
-
-
-        Process ps = Global.GetPs();
-        int RamSize { get; set; }
-
+        string RamSize { get; set; } = "10G";
         HttpClient client = new HttpClient();
-
         //WebClient webClient = new();
-        double starttime = 0;
+
         public Distroboot()
         {
             InitializeComponent();
+            Process ps = new();
+            ps.StartInfo.RedirectStandardInput = true;
+            ps.StartInfo.CreateNoWindow = false;
+            ps.StartInfo.FileName = "cmd.exe";
+            ps.StartInfo.UseShellExecute = false;
+            ps.StartInfo.Arguments = string.Empty;
+            ps.Start();
+            Global.Pid = ps.Id;
+            Global.Ps = ps;
+            ps.StandardInput.WriteLine("ECHO OFF & color 5e & cls & " + "echo pid: " + ps.Id);
+            hWnd = ps.MainWindowHandle;
+            ShowWindow((int)hWnd, SW_HIDE);
         }
         private void ShowDetailedInfo(object sender, ItemCheckEventArgs e)
         {
@@ -118,9 +123,9 @@ namespace WinFormsDistroboot
                 case "11":
                     lblId.Text = "IMAGE ID: 11";
                     lblId.Visible = false;
-                    lblIso.Text = @"c:\iso\debian-11.6.0-amd64-DVD-1.iso";
+                    lblIso.Text = @"c:\iso\Linux-lite-6.2-64bit.iso";
                     lblIso.Visible = false;
-                    lblUrl.Text = "https://cdimage.debian.org/debian-cd/current/amd64/iso-dvd/debian-11.6.0-amd64-DVD-1.iso";
+                    lblUrl.Text = "https://ftp.halifax.rwth-aachen.de/osdn/storage/g/l/li/linuxlite/6.2/linux-lite-6.2-64bit.iso";
                     break;
                 case "12":
                     lblId.Text = "IMAGE ID: 12";
@@ -265,7 +270,7 @@ namespace WinFormsDistroboot
                 case "32":
                     lblId.Text = "IMAGE ID: 32";
                     lblId.Visible = false;
-                    lblIso.Text = @"c:\iso\LXLE-Focal-Release.iso.iso";
+                    lblIso.Text = @"c:\iso\LXLE-Focal-Release.iso";
                     lblIso.Visible = false;
                     lblUrl.Text = "https://sourceforge.net/projects/lxle/files/Final/OS/Focal-64/LXLE-Focal-Release.iso/download";
                     break;
@@ -447,58 +452,57 @@ namespace WinFormsDistroboot
                 case "58":
                     lblId.Text = "IMAGE ID: 58";
                     lblId.Visible = false;
-                    lblIso.Text = @"c:\iso\Loc-OS-22-LXDE-x86_64.iso";
+                    lblIso.Text = @"c:\iso\Redcore.Linux.Hardened.2301.Sirius.KDE.amd64.iso";
                     lblIso.Visible = false;
-                    lblUrl.Text = "https://sourceforge.net/projects/loc-os/files/Loc-OS%2022/LXDE/Loc-OS-22-LXDE-x86_64.iso/download";
+                    lblUrl.Text = "http://ro.mirror.redcorelinux.org/amd64/iso/Redcore.Linux.Hardened.2301.Sirius.KDE.amd64.iso";
                     break;
                 case "59":
                     lblId.Text = "IMAGE ID: 59";
+                    lblId.Visible = false;
+                    lblIso.Text = @"c:\iso\locos.iso";
+                    lblIso.Visible = false;
+                    lblUrl.Text = "https://sourceforge.net/projects/loc-os/files/Loc-OS%2022/LXDE/Loc-OS-22-LXDE-x86_64.iso/download";
+                    break;
+                case "60":
+                    lblId.Text = "IMAGE ID: 60";
                     lblId.Visible = false;
                     lblIso.Text = @"c:\iso\MABOX.iso";
                     lblIso.Visible = false;
                     lblUrl.Text = "https://sourceforge.net/projects/mabox-linux/files/latest/download";
                     break;
-                case "60":
-                    lblId.Text = "IMAGE ID: 60";
-                    lblId.Visible = false;
-                    lblIso.Text = @"c:\iso\EMMABUNTUS.iso";
-                    lblIso.Visible = false;
-                    lblUrl.Text = "https://sourceforge.net/projects/emmabuntus/files/latest/download";
-                    break;
                 case "61":
                     lblId.Text = "IMAGE ID: 61";
                     lblId.Visible = false;
+                    lblIso.Text = @"c:\iso\remixOS.zip";
+                    lblUrl.Text = "https://sourceforge.net/projects/remix-os/files/Remix_OS_for_PC_Android_M_64bit_B2016112101.zip/download";
+                    break;
+                case "62":
+                    lblId.Text = "IMAGE ID: 62";
+                    lblId.Visible = false;
                     lblIso.Text = @"c:\iso\EMMABUNTUS.iso";
                     lblIso.Visible = false;
                     lblUrl.Text = "https://sourceforge.net/projects/emmabuntus/files/latest/download";
                     break;
-                case "62":
-                    lblId.Text = "IMAGE ID: 62";
+                case "63":
+                    lblId.Text = "IMAGE ID: 63";
                     lblId.Visible = false;
                     lblIso.Text = @"c:\iso\arcolinuxb-xtended-v23.03.01-x86_64.iso";
                     lblIso.Visible = false;
                     lblUrl.Text = "https://sourceforge.net/projects/arcolinux-community-editions/files/xtended/arcolinuxb-xtended-v23.03.01-x86_64.iso/download";
                     break;
-                case "63":
-                    lblId.Text = "IMAGE ID: 63";
+                case "64":
+                    lblId.Text = "IMAGE ID: 64";
                     lblId.Visible = false;
                     lblIso.Text = @"c:\iso\openmandriva.iso";
                     lblIso.Visible = false;
                     lblUrl.Text = "https://sourceforge.net/projects/openmandriva/files/latest/download";
                     break;
-                case "64":
-                    lblId.Text = "IMAGE ID: 64";
+                case "65":
+                    lblId.Text = "IMAGE ID: 65";
                     lblId.Visible = false;
                     lblIso.Text = @"c:\iso\legacyos.iso";
                     lblIso.Visible = false;
                     lblUrl.Text = "https://sourceforge.net/projects/legacyoslinux/files/latest/download";
-                    break;
-                case "65":
-                    lblId.Text = "IMAGE ID: 65";
-                    lblId.Visible = false;
-                    lblIso.Text = @"c:\iso\cachyos.iso";
-                    lblIso.Visible = false;
-                    lblUrl.Text = "https://sourceforge.net/projects/cachyos-arch/files/latest/download";
                     break;
                 case "66":
                     lblId.Text = "IMAGE ID: 66";
@@ -507,170 +511,176 @@ namespace WinFormsDistroboot
                     lblIso.Visible = false;
                     lblUrl.Text = "https://netcologne.dl.sourceforge.net/project/xiaopanos/Xiaopan%206.4.1.zip";
                     break;
-
                 case "67":
                     lblId.Text = "IMAGE ID: 67";
+                    lblId.Visible = false;
+                    lblIso.Text = @"c:\iso\cachyos.iso";
+                    lblIso.Visible = false;
+                    lblUrl.Text = "https://sourceforge.net/projects/cachyos-arch/files/latest/download";
+                    break;
+                case "68":
+                    lblId.Text = "IMAGE ID: 68";
                     lblId.Visible = false;
                     lblIso.Text = @"c:\iso\slint64-15.0-2.iso";
                     lblIso.Visible = false;
                     lblUrl.Text = "https://slackware.uk/slint/x86_64/slint-15.0/iso/slint64-15.0-2.iso";
                     break;
-                case "68":
-                    lblId.Text = "IMAGE ID: 68";
+                case "69":
+                    lblId.Text = "IMAGE ID: 69";
                     lblId.Visible = false;
                     lblIso.Text = @"c:\iso\neurolinux-20.04.2-2021.04.05-April%202021.0-amd64.iso";
                     lblIso.Visible = false;
                     lblUrl.Text = "http://neurolinux.net/downloads/neurolinux-20.04.2-2021.04.05-April%202021.0-amd64.iso";
                     break;
-                case "69":
-                    lblId.Text = "IMAGE ID: 69";
+                case "70":
+                    lblId.Text = "IMAGE ID: 70";
                     lblId.Visible = false;
                     lblIso.Text = @"c:\iso\jarro4_0_0.iso";
                     lblIso.Visible = false;
                     lblUrl.Text = "https://jarronegro.mx/jarro4_0_0.iso";
                     break;
-                case "70":
-                    lblId.Text = "IMAGE ID: 70";
+                case "71":
+                    lblId.Text = "IMAGE ID: 71";
                     lblId.Visible = false;
                     lblIso.Text = @"c:\iso\predator-os-v2.5-LTS.iso";
                     lblIso.Visible = false;
                     lblUrl.Text = "https://seilany.ir/predator-os/download/predator-os-v2.5-LTS.iso";
                     break;
-                case "71":
-                    lblId.Text = "IMAGE ID: 71";
+                case "72":
+                    lblId.Text = "IMAGE ID: 72";
                     lblId.Visible = false;
                     lblIso.Text = @"c:\iso\XOS.iso";
                     lblIso.Visible = false;
                     lblUrl.Text = "https://sourceforge.net/projects/xos-workstation/files/latest/download";
                     break;
-                case "72":
-                    lblId.Text = "IMAGE ID: 72";
+                case "73":
+                    lblId.Text = "IMAGE ID: 73";
                     lblId.Visible = false;
                     lblIso.Text = @"c:\iso\DRAGONOS.iso";
                     lblIso.Visible = false;
                     lblUrl.Text = "https://sourceforge.net/projects/dragonos-focal/files/latest/download";
                     break;
-                case "73":
-                    lblId.Text = "IMAGE ID: 73";
+                case "74":
+                    lblId.Text = "IMAGE ID: 74";
                     lblId.Visible = false;
                     lblIso.Text = @"c:\iso\lixix.iso";
                     lblIso.Visible = false;
                     lblUrl.Text = "https://caesar-rylan.60.nu/lirix/iso";
                     break;
-                case "74":
-                    lblId.Text = "IMAGE ID: 74";
+                case "75":
+                    lblId.Text = "IMAGE ID: 75";
                     lblId.Visible = false;
                     lblIso.Text = @"c:\iso\Circle-8.7-x86_64-dvd1.iso";
                     lblIso.Visible = false;
                     lblUrl.Text = "https://mirror.cclinux.org/pub/circle/8.7/isos/x86_64/Circle-8.7-x86_64-dvd1.iso";
                     break;
-                case "75":
-                    lblId.Text = "IMAGE ID: 75";
+                case "76":
+                    lblId.Text = "IMAGE ID: 76";
                     lblId.Visible = false;
                     lblIso.Text = @"c:\iso\rolling-2022-09-07.iso";
                     lblIso.Visible = false;
                     lblUrl.Text = "https://archive.org/download/rolling-2022-09-07/rolling-2022-09-07.iso";
                     break;
-                case "76":
-                    lblId.Text = "IMAGE ID: 76";
+                case "77":
+                    lblId.Text = "IMAGE ID: 77";
                     lblId.Visible = false;
                     lblIso.Text = @"c:\iso\titan.iso";
                     lblIso.Visible = false;
                     lblUrl.Text = "https://sourceforge.net/projects/titan-linux/files/latest/download";
                     break;
-                case "77":
-                    lblId.Text = "IMAGE ID: 77";
+                case "78":
+                    lblId.Text = "IMAGE ID: 78";
                     lblId.Visible = false;
                     lblIso.Text = @"c:\iso\crowz.iso";
                     lblIso.Visible = false;
                     lblUrl.Text = "https://sourceforge.net/projects/crowz/files/latest/download";
                     break;
-                case "78":
-                    lblId.Text = "IMAGE ID: 78";
+                case "79":
+                    lblId.Text = "IMAGE ID: 79";
                     lblId.Visible = false;
                     lblIso.Text = @"c:\iso\datLinux.iso";
                     lblIso.Visible = false;
                     lblUrl.Text = "https://sourceforge.net/projects/dat-linux/files/latest/download";
                     break;
-                case "79":
-                    lblId.Text = "IMAGE ID: 79";
+                case "80":
+                    lblId.Text = "IMAGE ID: 80";
                     lblId.Visible = false;
                     lblIso.Text = @"c:\iso\freedomOS.iso";
                     lblIso.Visible = false;
                     lblUrl.Text = "https://sourceforge.net/projects/freedomoslinux/files/latest/download";
                     break;
-                case "80":
-                    lblId.Text = "IMAGE ID: 80";
+                case "81":
+                    lblId.Text = "IMAGE ID: 81";
                     lblId.Visible = false;
                     lblIso.Text = @"c:\iso\metis-base-runit-20220717-v1.1.1-x86_64.iso";
                     lblIso.Visible = false;
                     lblUrl.Text = "https://github.com/metis-os/metis-iso/releases/download/v1.1.1/metis-base-runit-20220717-v1.1.1-x86_64.iso";
                     break;
-                case "81":
-                    lblId.Text = "IMAGE ID: 81";
+                case "82":
+                    lblId.Text = "IMAGE ID: 82";
                     lblId.Visible = false;
                     lblIso.Text = @"c:\iso\gnuinos-4.0.0-chimaera_2023.02.22-ob_amd64.iso";
                     lblIso.Visible = false;
                     lblUrl.Text = "https://www.gnuinos.org/mirror/chimaera/live/gnuinos-4.0.0-chimaera_2023.02.22-ob_amd64.iso";
                     break;
-                case "82":
-                    lblId.Text = "IMAGE ID: 82";
+                case "83":
+                    lblId.Text = "IMAGE ID: 83";
                     lblId.Visible = false;
                     lblIso.Text = @"c:\iso\gnuinos-5.0.0-daedalus_2022.11.05-xfce_amd64.iso";
                     lblIso.Visible = false;
                     lblUrl.Text = "https://www.gnuinos.org/mirror/daedalus/live/gnuinos-5.0.0-daedalus_2022.11.05-xfce_amd64.iso";
                     break;
-                case "83":
-                    lblId.Text = "IMAGE ID: 83";
+                case "84":
+                    lblId.Text = "IMAGE ID: 84";
                     lblId.Visible = false;
                     lblIso.Text = @"c:\iso\convectix_darwin.iso";
                     lblIso.Visible = false;
                     lblUrl.Text = "https://myb.convectix.com/DL/nubectl-darwin";
                     break;
-                case "84":
-                    lblId.Text = "IMAGE ID: 84";
+                case "85":
+                    lblId.Text = "IMAGE ID: 85";
                     lblId.Visible = false;
                     lblIso.Text = @"c:\iso\myb-13.1.2.iso";
                     lblIso.Visible = false;
                     lblUrl.Text = "https://myb.convectix.com/DL/myb-13.1.2.iso";
                     break;
-                case "85":
-                    lblId.Text = "IMAGE ID: 85";
+                case "86":
+                    lblId.Text = "IMAGE ID: 86";
                     lblId.Visible = false;
                     lblIso.Text = @"c:\iso\ShinyOS-V1-desktop-amd64.iso";
                     lblIso.Visible = false;
                     lblUrl.Text = "https://sourceforge.net/projects/shinyos/files/ShinyOS-V1-desktop-amd64.iso/download";
                     break;
-                case "86":
-                    lblId.Text = "IMAGE ID: 86";
+                case "87":
+                    lblId.Text = "IMAGE ID: 87";
                     lblId.Visible = false;
                     lblIso.Text = @"c:\iso\carbonOS-2022.3-installer.iso";
                     lblIso.Visible = false;
                     lblUrl.Text = "https://repo.carbon.sh/img/carbonOS-2022.3-installer.iso";
                     break;
-                case "87":
-                    lblId.Text = "IMAGE ID: 87";
+                case "88":
+                    lblId.Text = "IMAGE ID: 88";
                     lblId.Visible = false;
                     lblIso.Text = @"c:\iso\PikaOS-Gnome-2210-amd64_23.02.17.iso";
                     lblIso.Visible = false;
                     lblUrl.Text = "https://pika-os.com/PikaOS-Gnome-2210-amd64_23.02.17.iso";
                     break;
-                case "88":
-                    lblId.Text = "IMAGE ID: 88";
+                case "89":
+                    lblId.Text = "IMAGE ID: 89";
                     lblId.Visible = false;
                     lblIso.Text = @"c:\iso\PikaOS-KDE-2210-amd64_23.02.18.iso";
                     lblIso.Visible = false;
                     lblUrl.Text = "https://pika-os.com/PikaOS-KDE-2210-amd64_23.02.18.iso";
                     break;
-                case "89":
-                    lblId.Text = "IMAGE ID: 89";
+                case "90":
+                    lblId.Text = "IMAGE ID: 90";
                     lblId.Visible = false;
                     lblIso.Text = @"c:\iso\blendOS-2023.01.26-x86_64.iso";
                     lblIso.Visible = false;
                     lblUrl.Text = "https://github.com/blend-os/blendOS/releases/download/23.01/blendOS-2023.01.26-x86_64.iso";
                     break;
-                case "90":
-                    lblId.Text = "IMAGE ID: 90";
+                case "91":
+                    lblId.Text = "IMAGE ID: 91";
                     lblId.Visible = false;
                     lblIso.Text = @"c:\iso\ACCCoco.iso";
                     lblIso.Visible = false;
@@ -679,22 +689,12 @@ namespace WinFormsDistroboot
                 default:
                     break;
             }
-
-
-                GrpImageDetails.Visible = true;
-            //if (GrpImageDetails.Visible == false)
-            //{
-            //    //GrpImageDetails.Visible = false;
-            //}
-            //else
-            //{
-            //    GrpImageDetails.Visible = false;
-            //}
+            GrpImageDetails.Visible = true;
         }
 
         private void ProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
-            string Downloaded = string.Format("{0}    Downloading: {1} of {2}MB", (string)e.UserState, e.BytesReceived / 1024 / 1024, e.TotalBytesToReceive / 1024 / 1024);
+            string Downloaded = string.Format("{0}    Downloading: {1} of {2}MB", e.UserState as string, e.BytesReceived / 1024 / 1024, e.TotalBytesToReceive / 1024 / 1024);
             lblSpeed.Visible = true;
             lblSpeed.Text = Downloaded;
             progressBar1.Value = e.ProgressPercentage;
@@ -718,11 +718,15 @@ namespace WinFormsDistroboot
             {
                 if (item.ToLower().EndsWith(".zip"))
                 {
+                    progressBar1.Value = 0;
                     int Index = ImagesLocal.SelectedIndex;
-                    ps.StandardInput.WriteLine("PowerShell -Command \"Expand-Archive -Path " + item + " -DestinationPath C:\\ISO\"");
-                    ps.StandardInput.WriteLine("del " + item);
+                    Global.Ps.StandardInput.WriteLine("PowerShell -Command \"Expand-Archive -Path " + item + " -DestinationPath C:\\ISO\"");
+                    Global.Ps.StandardInput.WriteLine("del " + item);
                 }
-
+                if (item.ToUpper().EndsWith(".ISO") || item.ToUpper().EndsWith(".IMG"))
+                {
+                    ImagesLocal.Items.Add(item);
+                }
             }
         }
 
@@ -1153,16 +1157,16 @@ namespace WinFormsDistroboot
                             case "58":
                                 lblId.Text = "IMAGE ID: 58";
                                 lblId.Visible = false;
-                                lblIso.Text = @"c:\iso\Loc-OS-22-LXDE-x86_64.iso";
+                                lblIso.Text = @"c:\iso\Redcore.Linux.Hardened.2301.Sirius.KDE.amd64.iso";
                                 lblIso.Visible = false;
-                                lblUrl.Text = "https://sourceforge.net/projects/loc-os/files/Loc-OS%2022/LXDE/Loc-OS-22-LXDE-x86_64.iso/download";
+                                lblUrl.Text = "http://ro.mirror.redcorelinux.org/amd64/iso/Redcore.Linux.Hardened.2301.Sirius.KDE.amd64.iso";
                                 break;
                             case "59":
                                 lblId.Text = "IMAGE ID: 59";
                                 lblId.Visible = false;
-                                lblIso.Text = @"c:\iso\MABOX.iso";
+                                lblIso.Text = @"c:\iso\locos.iso";
                                 lblIso.Visible = false;
-                                lblUrl.Text = "https://sourceforge.net/projects/mabox-linux/files/latest/download";
+                                lblUrl.Text = "https://sourceforge.net/projects/loc-os/files/Loc-OS%2022/LXDE/Loc-OS-22-LXDE-x86_64.iso/download";
                                 break;
                             case "60":
                                 lblId.Text = "IMAGE ID: 60";
@@ -1174,37 +1178,36 @@ namespace WinFormsDistroboot
                             case "61":
                                 lblId.Text = "IMAGE ID: 61";
                                 lblId.Visible = false;
+                                lblIso.Text = @"c:\iso\remixOS.zip";
+                                lblUrl.Text = "https://sourceforge.net/projects/remix-os/files/Remix_OS_for_PC_Android_M_64bit_B2016112101.zip/download";
+                                break;
+                            case "62":
+                                lblId.Text = "IMAGE ID: 62";
+                                lblId.Visible = false;
                                 lblIso.Text = @"c:\iso\EMMABUNTUS.iso";
                                 lblIso.Visible = false;
                                 lblUrl.Text = "https://sourceforge.net/projects/emmabuntus/files/latest/download";
                                 break;
-                            case "62":
-                                lblId.Text = "IMAGE ID: 62";
+                            case "63":
+                                lblId.Text = "IMAGE ID: 63";
                                 lblId.Visible = false;
                                 lblIso.Text = @"c:\iso\arcolinuxb-xtended-v23.03.01-x86_64.iso";
                                 lblIso.Visible = false;
                                 lblUrl.Text = "https://sourceforge.net/projects/arcolinux-community-editions/files/xtended/arcolinuxb-xtended-v23.03.01-x86_64.iso/download";
                                 break;
-                            case "63":
-                                lblId.Text = "IMAGE ID: 63";
+                            case "64":
+                                lblId.Text = "IMAGE ID: 64";
                                 lblId.Visible = false;
                                 lblIso.Text = @"c:\iso\openmandriva.iso";
                                 lblIso.Visible = false;
                                 lblUrl.Text = "https://sourceforge.net/projects/openmandriva/files/latest/download";
                                 break;
-                            case "64":
-                                lblId.Text = "IMAGE ID: 64";
+                            case "65":
+                                lblId.Text = "IMAGE ID: 65";
                                 lblId.Visible = false;
                                 lblIso.Text = @"c:\iso\legacyos.iso";
                                 lblIso.Visible = false;
                                 lblUrl.Text = "https://sourceforge.net/projects/legacyoslinux/files/latest/download";
-                                break;
-                            case "65":
-                                lblId.Text = "IMAGE ID: 65";
-                                lblId.Visible = false;
-                                lblIso.Text = @"c:\iso\cachyos.iso";
-                                lblIso.Visible = false;
-                                lblUrl.Text = "https://sourceforge.net/projects/cachyos-arch/files/latest/download";
                                 break;
                             case "66":
                                 lblId.Text = "IMAGE ID: 66";
@@ -1216,166 +1219,173 @@ namespace WinFormsDistroboot
                             case "67":
                                 lblId.Text = "IMAGE ID: 67";
                                 lblId.Visible = false;
+                                lblIso.Text = @"c:\iso\cachyos.iso";
+                                lblIso.Visible = false;
+                                lblUrl.Text = "https://sourceforge.net/projects/cachyos-arch/files/latest/download";
+                                break;
+                            case "68":
+                                lblId.Text = "IMAGE ID: 68";
+                                lblId.Visible = false;
                                 lblIso.Text = @"c:\iso\slint64-15.0-2.iso";
                                 lblIso.Visible = false;
                                 lblUrl.Text = "https://slackware.uk/slint/x86_64/slint-15.0/iso/slint64-15.0-2.iso";
                                 break;
-                            case "68":
-                                lblId.Text = "IMAGE ID: 68";
+                            case "69":
+                                lblId.Text = "IMAGE ID: 69";
                                 lblId.Visible = false;
                                 lblIso.Text = @"c:\iso\neurolinux-20.04.2-2021.04.05-April%202021.0-amd64.iso";
                                 lblIso.Visible = false;
                                 lblUrl.Text = "http://neurolinux.net/downloads/neurolinux-20.04.2-2021.04.05-April%202021.0-amd64.iso";
                                 break;
-                            case "69":
-                                lblId.Text = "IMAGE ID: 69";
+                            case "70":
+                                lblId.Text = "IMAGE ID: 70";
                                 lblId.Visible = false;
                                 lblIso.Text = @"c:\iso\jarro4_0_0.iso";
                                 lblIso.Visible = false;
                                 lblUrl.Text = "https://jarronegro.mx/jarro4_0_0.iso";
                                 break;
-                            case "70":
-                                lblId.Text = "IMAGE ID: 70";
+                            case "71":
+                                lblId.Text = "IMAGE ID: 71";
                                 lblId.Visible = false;
                                 lblIso.Text = @"c:\iso\predator-os-v2.5-LTS.iso";
                                 lblIso.Visible = false;
                                 lblUrl.Text = "https://seilany.ir/predator-os/download/predator-os-v2.5-LTS.iso";
                                 break;
-                            case "71":
-                                lblId.Text = "IMAGE ID: 71";
+                            case "72":
+                                lblId.Text = "IMAGE ID: 72";
                                 lblId.Visible = false;
                                 lblIso.Text = @"c:\iso\XOS.iso";
                                 lblIso.Visible = false;
                                 lblUrl.Text = "https://sourceforge.net/projects/xos-workstation/files/latest/download";
                                 break;
-                            case "72":
-                                lblId.Text = "IMAGE ID: 72";
+                            case "73":
+                                lblId.Text = "IMAGE ID: 73";
                                 lblId.Visible = false;
                                 lblIso.Text = @"c:\iso\DRAGONOS.iso";
                                 lblIso.Visible = false;
                                 lblUrl.Text = "https://sourceforge.net/projects/dragonos-focal/files/latest/download";
                                 break;
-                            case "73":
-                                lblId.Text = "IMAGE ID: 73";
+                            case "74":
+                                lblId.Text = "IMAGE ID: 74";
                                 lblId.Visible = false;
                                 lblIso.Text = @"c:\iso\lixix.iso";
                                 lblIso.Visible = false;
                                 lblUrl.Text = "https://caesar-rylan.60.nu/lirix/iso";
                                 break;
-                            case "74":
-                                lblId.Text = "IMAGE ID: 74";
+                            case "75":
+                                lblId.Text = "IMAGE ID: 75";
                                 lblId.Visible = false;
                                 lblIso.Text = @"c:\iso\Circle-8.7-x86_64-dvd1.iso";
                                 lblIso.Visible = false;
                                 lblUrl.Text = "https://mirror.cclinux.org/pub/circle/8.7/isos/x86_64/Circle-8.7-x86_64-dvd1.iso";
                                 break;
-                            case "75":
-                                lblId.Text = "IMAGE ID: 75";
+                            case "76":
+                                lblId.Text = "IMAGE ID: 76";
                                 lblId.Visible = false;
                                 lblIso.Text = @"c:\iso\rolling-2022-09-07.iso";
                                 lblIso.Visible = false;
                                 lblUrl.Text = "https://archive.org/download/rolling-2022-09-07/rolling-2022-09-07.iso";
                                 break;
-                            case "76":
-                                lblId.Text = "IMAGE ID: 76";
+                            case "77":
+                                lblId.Text = "IMAGE ID: 77";
                                 lblId.Visible = false;
                                 lblIso.Text = @"c:\iso\titan.iso";
                                 lblIso.Visible = false;
                                 lblUrl.Text = "https://sourceforge.net/projects/titan-linux/files/latest/download";
                                 break;
-                            case "77":
-                                lblId.Text = "IMAGE ID: 77";
+                            case "78":
+                                lblId.Text = "IMAGE ID: 78";
                                 lblId.Visible = false;
                                 lblIso.Text = @"c:\iso\crowz.iso";
                                 lblIso.Visible = false;
                                 lblUrl.Text = "https://sourceforge.net/projects/crowz/files/latest/download";
                                 break;
-                            case "78":
-                                lblId.Text = "IMAGE ID: 78";
+                            case "79":
+                                lblId.Text = "IMAGE ID: 79";
                                 lblId.Visible = false;
                                 lblIso.Text = @"c:\iso\datLinux.iso";
                                 lblIso.Visible = false;
                                 lblUrl.Text = "https://sourceforge.net/projects/dat-linux/files/latest/download";
                                 break;
-                            case "79":
-                                lblId.Text = "IMAGE ID: 79";
+                            case "80":
+                                lblId.Text = "IMAGE ID: 80";
                                 lblId.Visible = false;
                                 lblIso.Text = @"c:\iso\freedomOS.iso";
                                 lblIso.Visible = false;
                                 lblUrl.Text = "https://sourceforge.net/projects/freedomoslinux/files/latest/download";
                                 break;
-                            case "80":
-                                lblId.Text = "IMAGE ID: 80";
+                            case "81":
+                                lblId.Text = "IMAGE ID: 81";
                                 lblId.Visible = false;
                                 lblIso.Text = @"c:\iso\metis-base-runit-20220717-v1.1.1-x86_64.iso";
                                 lblIso.Visible = false;
                                 lblUrl.Text = "https://github.com/metis-os/metis-iso/releases/download/v1.1.1/metis-base-runit-20220717-v1.1.1-x86_64.iso";
                                 break;
-                            case "81":
-                                lblId.Text = "IMAGE ID: 81";
+                            case "82":
+                                lblId.Text = "IMAGE ID: 82";
                                 lblId.Visible = false;
                                 lblIso.Text = @"c:\iso\gnuinos-4.0.0-chimaera_2023.02.22-ob_amd64.iso";
                                 lblIso.Visible = false;
                                 lblUrl.Text = "https://www.gnuinos.org/mirror/chimaera/live/gnuinos-4.0.0-chimaera_2023.02.22-ob_amd64.iso";
                                 break;
-                            case "82":
-                                lblId.Text = "IMAGE ID: 82";
+                            case "83":
+                                lblId.Text = "IMAGE ID: 83";
                                 lblId.Visible = false;
                                 lblIso.Text = @"c:\iso\gnuinos-5.0.0-daedalus_2022.11.05-xfce_amd64.iso";
                                 lblIso.Visible = false;
                                 lblUrl.Text = "https://www.gnuinos.org/mirror/daedalus/live/gnuinos-5.0.0-daedalus_2022.11.05-xfce_amd64.iso";
                                 break;
-                            case "83":
-                                lblId.Text = "IMAGE ID: 83";
+                            case "84":
+                                lblId.Text = "IMAGE ID: 84";
                                 lblId.Visible = false;
                                 lblIso.Text = @"c:\iso\convectix_darwin.iso";
                                 lblIso.Visible = false;
                                 lblUrl.Text = "https://myb.convectix.com/DL/nubectl-darwin";
                                 break;
-                            case "84":
-                                lblId.Text = "IMAGE ID: 84";
+                            case "85":
+                                lblId.Text = "IMAGE ID: 85";
                                 lblId.Visible = false;
                                 lblIso.Text = @"c:\iso\myb-13.1.2.iso";
                                 lblIso.Visible = false;
                                 lblUrl.Text = "https://myb.convectix.com/DL/myb-13.1.2.iso";
                                 break;
-                            case "85":
-                                lblId.Text = "IMAGE ID: 85";
+                            case "86":
+                                lblId.Text = "IMAGE ID: 86";
                                 lblId.Visible = false;
                                 lblIso.Text = @"c:\iso\ShinyOS-V1-desktop-amd64.iso";
                                 lblIso.Visible = false;
                                 lblUrl.Text = "https://sourceforge.net/projects/shinyos/files/ShinyOS-V1-desktop-amd64.iso/download";
                                 break;
-                            case "86":
-                                lblId.Text = "IMAGE ID: 86";
+                            case "87":
+                                lblId.Text = "IMAGE ID: 87";
                                 lblId.Visible = false;
                                 lblIso.Text = @"c:\iso\carbonOS-2022.3-installer.iso";
                                 lblIso.Visible = false;
                                 lblUrl.Text = "https://repo.carbon.sh/img/carbonOS-2022.3-installer.iso";
                                 break;
-                            case "87":
-                                lblId.Text = "IMAGE ID: 87";
+                            case "88":
+                                lblId.Text = "IMAGE ID: 88";
                                 lblId.Visible = false;
                                 lblIso.Text = @"c:\iso\PikaOS-Gnome-2210-amd64_23.02.17.iso";
                                 lblIso.Visible = false;
                                 lblUrl.Text = "https://pika-os.com/PikaOS-Gnome-2210-amd64_23.02.17.iso";
                                 break;
-                            case "88":
-                                lblId.Text = "IMAGE ID: 88";
+                            case "89":
+                                lblId.Text = "IMAGE ID: 89";
                                 lblId.Visible = false;
                                 lblIso.Text = @"c:\iso\PikaOS-KDE-2210-amd64_23.02.18.iso";
                                 lblIso.Visible = false;
                                 lblUrl.Text = "https://pika-os.com/PikaOS-KDE-2210-amd64_23.02.18.iso";
                                 break;
-                            case "89":
-                                lblId.Text = "IMAGE ID: 89";
+                            case "90":
+                                lblId.Text = "IMAGE ID: 90";
                                 lblId.Visible = false;
                                 lblIso.Text = @"c:\iso\blendOS-2023.01.26-x86_64.iso";
                                 lblIso.Visible = false;
                                 lblUrl.Text = "https://github.com/blend-os/blendOS/releases/download/23.01/blendOS-2023.01.26-x86_64.iso";
                                 break;
-                            case "90":
-                                lblId.Text = "IMAGE ID: 90";
+                            case "91":
+                                lblId.Text = "IMAGE ID: 91";
                                 lblId.Visible = false;
                                 lblIso.Text = @"c:\iso\ACCCoco.iso";
                                 lblIso.Visible = false;
@@ -1397,7 +1407,16 @@ namespace WinFormsDistroboot
 
         private void radio10GB_SelectedChanged(object sender, EventArgs e)
         {
-            if (radio10GB.Checked) { var RamSize = "10GB"; } else { var RamSize = "4GB"; }
+            if (radio10GB.Checked)
+            {
+                RamSize = "10G";
+                Global.Ps.StandardInput.WriteLine("echo ramdisk size " + this.RamSize);
+            }
+            else
+            {
+                RamSize = "4G";
+                Global.Ps.StandardInput.WriteLine("echo ramdisk size " + this.RamSize);
+            }
         }
 
         private void Distroboot_Load(object sender, EventArgs e)
@@ -1420,15 +1439,14 @@ namespace WinFormsDistroboot
 
         private void ScanImages(object sender, EventArgs e)
         {
-            int Counter = 0;
             ImagesLocal.Items.Clear();
-            Process ps = Global.GetPs();
+            Process ps = Global.Ps;
             foreach (var item in Directory.EnumerateFiles("c:\\ISO", "*"))
             {
                 if (item.ToLower().EndsWith(".zip"))
                 {
-                    ps.StandardInput.WriteLine("start /wait PowerShell -Command \"Expand-Archive -Path " + item + " -DestinationPath C:\\ISO\"");
-                    ps.StandardInput.WriteLine("del " + item);
+                    Global.Ps.StandardInput.WriteLine("start /wait PowerShell -Command \"Expand-Archive -Path " + item + " -DestinationPath C:\\ISO\"");
+                    Global.Ps.StandardInput.WriteLine("del " + item);
                 }
                 if (item.ToUpper().EndsWith(".ISO") || item.ToUpper().EndsWith(".IMG"))
                 {
@@ -1439,15 +1457,15 @@ namespace WinFormsDistroboot
         }
         private void ShowTerminal(object sender, RoutedEventArgs e)
         {
-            IntPtr hwnd = ps.MainWindowHandle;
-            ShowWindow(hWnd, SW_SHOW);
+            IntPtr hWnd = Global.Ps.MainWindowHandle;
+            ShowWindow((int)hWnd, SW_HIDE);
             //ShowOutput.ToolTip = "Hide Terminal Output";
         }
 
         private void HideTerminal(object sender, RoutedEventArgs e)
         {
-            IntPtr hwnd = ps.MainWindowHandle;
-            ShowWindow(hWnd, SW_HIDE);
+            IntPtr hWnd = Global.Ps.MainWindowHandle;
+            ShowWindow((int)hWnd, SW_HIDE);
             //ShowOutput.ToolTip = "Show Terminal Output";
         }
         private void RemoveItem(object sender, EventArgs e)
@@ -1461,80 +1479,36 @@ namespace WinFormsDistroboot
 
         public void StartImage(object sender, MouseEventArgs e)
         {
-            Process ps = Global.GetPs();
-            int hWnd = (int)ps.MainWindowHandle;
-            ShowWindow(hWnd, SW_SHOW);
+            //int pid = Global.Pid;
+            //int hWnd = (int)Global.process.MainWindowHandle;
+            //ShowWindow(hWnd, SW_HIDE);
             if (!System.IO.File.Exists("C:\\Program Files\\qemu\\qemu-system-x86_64.exe"))
-            { ps.StandardInput.WriteLine("powershell -command \"winget install qemu\""); }
+            { Global.Ps.StandardInput.WriteLine("powershell -command \"winget install qemu\""); }
 
             string? fileName = ImagesLocal.Text;
-            MessageBox.Show("file " + fileName);
+            Global.Ps.StandardInput.WriteLine("echo ramdisk size " + this.RamSize);
             if (fileName.ToUpper().Contains(".IMG"))
             {
-                ps.StandardInput.WriteLine("\"C:\\Program Files\\qemu\\qemu-system-x86_64.exe\" -m 10G -drive file=" +
+                Global.Ps.StandardInput.WriteLine("\"C:\\Program Files\\qemu\\qemu-system-x86_64.exe\" -m " + this.RamSize + " -drive file=" +
                 (char)34 + fileName + (char)34 + ",format=raw,index=0,media=disk -vga virtio -no-reboot");
             };
             if (fileName.ToUpper().Contains(".ISO"))
             {
-                ps.StandardInput.WriteLine("\"C:\\Program Files\\qemu\\qemu-system-x86_64.exe\" -cdrom " +
-                (char)34 + fileName + (char)34 + " -m 10G");
+                Global.Ps.StandardInput.WriteLine("\"C:\\Program Files\\qemu\\qemu-system-x86_64.exe\" -cdrom " +
+                (char)34 + fileName + (char)34 + " -m " + this.RamSize);
             };
-            if (ps.HasExited)
+            if (Global.Ps.HasExited)
             {
                 //PrepSystem(sender, e);
             }
             if (ShowOutput.Checked)
             {
-                ShowWindow(hWnd, SW_SHOW);
+                ShowWindow((int)hWnd, SW_SHOW);
             }
             else
             {
-                ShowWindow(hWnd, SW_HIDE);
+                ShowWindow((int)hWnd, SW_HIDE);
             }
-
-
-
-
-
-            //            ListBox imagesLocal = sender as ListBox;
-
-
-            //          MessageBox.Show(ImagesLocal.SelectedItem.ToString());
-            //MessageBox.Show("PowerShell -Command \"" +
-            //                                    "Expand-Archive " +
-            //                "-Path c:\\ISO\\Xiaopan%206.4.1.zip " +
-            //                "-DestinationPath C:\\ISO\"");
-            //static extern Process CMD_Launcher(); //"powershell", "-command Expand-Archive -Path c:\\ISO\\Xiaopan%206.4.1.zip -DestinationPath C:\\ISO\");
-            //ps.StandardInput.WriteLine("PowerShell -Command \"" +
-            //                                    "Expand-Archive " +
-            //                "-Path c:\\ISO\\Xiaopan%206.4.1.zip " +
-            //                "-DestinationPath C:\\ISO\"");
-            //System.IO.File.Delete("c:\\ISO\\Xiaopan%206.4.1.zip");
-            //imagesLocal.Items.Add("c:\\ISO\\Xiaopan6.4.1.iso");
-
-            //if(!ImagesLocal.SelectedValue.ToString() == null)
-            //{
-
-            //}
-            //StartImage(sender, e);
-        }
-
-        public void PrepSystem(object sender, MouseEventArgs e)
-        {
-            Process ps = Global.GetPs();
-            if (!System.IO.File.Exists("C:\\Program Files\\qemu\\qemu-system-x86_64.exe"))
-            {
-                ps.StandardInput.WriteLine("powershell -command \"winget install qemu\"");
-            }
-
-            string? fileName = ImagesLocal.SelectedValue.ToString();
-            // Zip handling (extract and add to local images list in app
-            ps.StandardInput.WriteLine(@"PowerShell -Command \""Expand-Archive -Path " + fileName + " -DestinationPath C:\\ISO\"");
-            ImagesLocal.Items.Remove(fileName);
-            //ImagesLocal.SelectedIndex fileName.Remove(ImagesLocal.SelectedIndex);
-
         }
     }
-
-
 }

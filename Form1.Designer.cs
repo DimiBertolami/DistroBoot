@@ -5,29 +5,7 @@
         /// <summary>
         ///  Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        ///  Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing && (components != null))
-        //    {
-        //        components.Dispose();
-        //    }
-        //    base.Dispose(disposing);
-        //}
-
-            //public void InitializeComponent();
-
-        //#region Windows Form Designer generated code
-
-        /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Distroboot));
@@ -50,7 +28,7 @@
             button1 = new Button();
             RamdiskSize.SuspendLayout();
             GrpImageDetails.SuspendLayout();
-            //SuspendLayout();
+            SuspendLayout();
             // 
             // ImagesOnline
             // 
@@ -60,7 +38,7 @@
             ImagesOnline.Font = new Font("Franklin Gothic Medium", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             ImagesOnline.ForeColor = Color.Indigo;
             ImagesOnline.FormattingEnabled = true;
-            ImagesOnline.Items.AddRange(new object[] { "MX", "Endeavour", "Mint", "manjaro-kde", "manjaro-gnome", "pop-os Intel", "pop-os Nvidia", "Fedora-WS", "Ubuntu Desktop", "Ubuntu Studio", "Ubuntu Server", "Debian", "Linux Lite", "Garuda dr460nized", "elementaryOS", "Voyager Live", "AV Linux", "Haiku", "dragonFly BSD", "extix", "feren", "Nobara", "Qubes", "Neptune", "Athena OS", "Slax 64Bit", "Zorin core", "kali", "calculate linux", "coreplus", "Oracle Linux", "Open BSD", "LXLE-Focal-Release", "GeckoLinux", "Peropesis", "MakuluLinux-ShiFt", "kodachi", "bodhi", "Tuxedo OS", "Tails", "Slackware", "Linux FX Win 10", "Linux FX Win 11", "fossapup64", "Arco Linux", "Easy Linux", "Nitrux", "Rocky Linux", "Salix", "Devuan Beowulf", "gentoo", "pure OS", "ELD", "prime OS", "Bliss OS", "React OS", "peppermint OS", "Clear Linux", "Redcore.Linux.Hardened", "Loc OS", "Mabox", "Reloaded OS", "Emmabuntus", "arcolinux", "open Mandriva", "Legacy OS", "Xiaopan", "cachy OS", "Slint", "Neurolinux", "Jarro Negro", "Predator OS", "xos workstation", "Dragon OS", "Lirix", "Circle OS", "Roling OS", "Titan Linux", "Crowz OS", "Dat Linux", "Freedom OS", "Metis OS", "Chimaera OS", "daedalus", "convectix darwin", "convectix myb-13.1.2.iso", "Shiny OS", "Carbon OS", "PikaOS Gnome", "PikaOS KDE", "Blend OS", "Accessible Coconut" });
+            ImagesOnline.Items.AddRange(new object[] { "MX", "Endeavour", "Mint", "manjaro-kde", "manjaro-gnome", "pop-os Intel", "pop-os Nvidia", "Fedora-WS", "Ubuntu Desktop", "Ubuntu Studio", "Ubuntu Server", "Debian", "Linux Lite", "Garuda dr460nized", "elementaryOS", "Voyager Live", "AV Linux", "Haiku", "dragonFly BSD", "extix", "feren", "Nobara", "Qubes", "Neptune", "Athena OS", "Slax 64Bit", "Zorin core", "kali", "calculate linux", "coreplus", "Oracle Linux", "Open BSD", "LXLE-Focal-Release", "GeckoLinux", "Peropesis", "MakuluLinux-ShiFt", "kodachi", "bodhi", "Tuxedo OS", "Tails", "Slackware", "Linux FX Win 10", "Linux FX Win 11", "fossapup64", "Arco Linux", "Easy Linux", "Nitrux", "Rocky Linux", "Salix", "Devuan Beowulf", "gentoo", "pure OS", "ELD", "prime OS", "Bliss OS", "React OS", "peppermint OS", "Clear Linux", "Redcore.Linux.Hardened", "Loc OS", "Mabox", "Remix OS", "Emmabuntus", "arcolinux", "open Mandriva", "Legacy OS", "Xiaopan", "cachy OS", "Slint", "Neurolinux", "Jarro Negro", "Predator OS", "xos workstation", "Dragon OS", "Lirix", "Circle OS", "Roling OS", "Titan Linux", "Crowz OS", "Dat Linux", "Freedom OS", "Metis OS", "Chimaera OS", "daedalus", "convectix darwin", "convectix myb-13.1.2.iso", "Shiny OS", "Carbon OS", "PikaOS Gnome", "PikaOS KDE", "Blend OS", "Accessible Coconut" });
             ImagesOnline.Location = new Point(779, -1);
             ImagesOnline.Margin = new Padding(4, 2, 4, 2);
             ImagesOnline.MultiColumn = true;
@@ -71,7 +49,6 @@
             ImagesOnline.ThreeDCheckBoxes = true;
             ImagesOnline.UseWaitCursor = true;
             ImagesOnline.ItemCheck += ShowDetailedInfo;
-            ImagesOnline.BackColorChanged += radio10GB_SelectedChanged;
             // 
             // DLDistro
             // 
@@ -116,7 +93,7 @@
             ShowOutput.TabIndex = 5;
             ShowOutput.Text = "Show terminal";
             ShowOutput.UseVisualStyleBackColor = true;
-            ShowOutput.UseWaitCursor = false;
+            ShowOutput.UseWaitCursor = true;
             // 
             // radio10GB
             // 
@@ -131,8 +108,8 @@
             radio10GB.TabStop = true;
             radio10GB.Text = "10GB";
             radio10GB.UseVisualStyleBackColor = true;
-            radio10GB.UseWaitCursor = false;
-            //radio10GB.CheckedChanged += FindImage;
+            radio10GB.UseWaitCursor = true;
+            radio10GB.CheckedChanged += radio10GB_SelectedChanged;
             // 
             // radio4GB
             // 
@@ -147,8 +124,6 @@
             radio4GB.Text = "4GB";
             radio4GB.UseVisualStyleBackColor = true;
             radio4GB.UseWaitCursor = true;
-            //EventHandler SHOW_HIDECMD = null;
-            //radio4GB.CheckedChanged += FindImage;
             // 
             // lblId
             // 
@@ -194,7 +169,7 @@
             GrpImageDetails.Size = new Size(777, 95);
             GrpImageDetails.TabIndex = 10;
             GrpImageDetails.TabStop = false;
-            GrpImageDetails.Text = "download speed";
+            GrpImageDetails.Text = "iso detail";
             GrpImageDetails.UseWaitCursor = true;
             GrpImageDetails.Visible = false;
             // 
@@ -204,10 +179,10 @@
             lblSpeed.Location = new Point(460, 67);
             lblSpeed.Margin = new Padding(4, 0, 4, 0);
             lblSpeed.Name = "lblSpeed";
-            lblSpeed.Size = new Size(41, 20);
+            lblSpeed.Size = new Size(13, 20);
             lblSpeed.TabIndex = 0;
             lblSpeed.Text = " ";
-            //lblSpeed.UseWaitCursor = true;
+            lblSpeed.UseWaitCursor = true;
             // 
             // progressBar1
             // 
@@ -231,7 +206,7 @@
             ImagesLocal.Name = "ImagesLocal";
             ImagesLocal.Size = new Size(777, 200);
             ImagesLocal.TabIndex = 12;
-            ImagesLocal.UseWaitCursor = false;
+            ImagesLocal.UseWaitCursor = true;
             ImagesLocal.MouseDoubleClick += StartImage;
             // 
             // AddImage
@@ -270,7 +245,7 @@
             button1.TabIndex = 15;
             button1.Text = "Scan iso folder";
             button1.UseVisualStyleBackColor = true;
-            button1.UseWaitCursor = false;
+            button1.UseWaitCursor = true;
             button1.Click += ScanImages;
             // 
             // Distroboot

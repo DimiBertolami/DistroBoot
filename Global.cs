@@ -10,24 +10,13 @@ namespace WinFormsDistroboot
 {
     public class Global
     {
-        public double st { get; set; }
-        public string archive { get; set; }
-        public Process ps { get; set; } = GetPs();
-
-        public static Process GetPs()
-        {
-            Process ps = new Process();
-            ps.StartInfo.RedirectStandardInput = true;
-            ps.StartInfo.CreateNoWindow = false;
-            ps.StartInfo.FileName = "cmd.exe";
-            ps.StartInfo.UseShellExecute = false;
-            ps.StartInfo.Arguments = string.Empty;
-            ps.Start();
-            return ps;
-        }
-
         public int handle { get; set; }
-        public string Downloaded { get; set; }
+        public static int Pid { get; internal set; }
+        public static Process? Ps { get; set; } = Process.GetProcessById(Global.Pid);
+        public static Process GetPS(int Id)
+        {
+            return Process.GetProcessById(Id);
+        }
 
     }
 }
