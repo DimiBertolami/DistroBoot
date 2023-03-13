@@ -1,5 +1,5 @@
 # DistroBoot
-this time written in windows forms ASYNCHRONOUSLY (meaning gui won't block on user actions anymore)!
+this time written in windows forms ASYNCHRONOUSLY (meaning gui won't block on user actions anymore, so you can now test your local ISOs while downloading other iso's)!
 
 [![Download Distro-Boot](https://a.fsdn.com/con/app/sf-download-button)](https://sourceforge.net/projects/distroboot/files/latest/download)
 
