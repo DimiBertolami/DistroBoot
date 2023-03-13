@@ -686,6 +686,69 @@ namespace WinFormsDistroboot
                     lblIso.Visible = false;
                     lblUrl.Text = "https://sourceforge.net/projects/accessible-coconut/files/latest/download";
                     break;
+                case "92":
+                    lblId.Text = "IMAGE ID: 92";
+                    lblId.Visible = false;
+                    lblIso.Text = @"c:\iso\Drauger_OS-7.6-AMD64.iso";
+                    lblIso.Visible = false;
+                    lblUrl.Text = "https://download-optimizer.draugeros.org/ISOs/Drauger_OS-7.6-AMD64.iso";
+                    break;
+                case "93":
+                    lblId.Text = "IMAGE ID: 93";
+                    lblId.Visible = false;
+                    lblIso.Text = @"c:\iso\Techrich-Crypto-Disc-Bullrun-21777.iso";
+                    lblIso.Visible = false;
+                    lblUrl.Text = "https://cryptocurrencyos.org/downloads/Techrich-Crypto-Disc-Bullrun-21777.iso";
+                    break;
+                case "94":
+                    lblId.Text = "IMAGE ID: 94";
+                    lblId.Visible = false;
+                    lblIso.Text = @"c:\iso\aos-beta-3.1-x86_64.iso";
+                    lblIso.Visible = false;
+                    lblUrl.Text = "https://sourceforge.net/projects/allegianceos/files/ISOs/aos-beta-3.1-x86_64.iso/download";
+                    break;
+                case "95":
+                    lblId.Text = "IMAGE ID: 95";
+                    lblId.Visible = false;
+                    lblIso.Text = @"c:\iso\StormOS_KDE-2023.02.24-x86_64.iso";
+                    lblIso.Visible = false;
+                    lblUrl.Text = "https://sourceforge.net/projects/hackman-linux/files/2022/kde/StormOS_KDE-2023.02.24-x86_64.iso/download";
+                    break;
+                case "96":
+                    lblId.Text = "IMAGE ID: 96";
+                    lblId.Visible = false;
+                    lblIso.Text = @"c:\iso\Alien-OS_nano_MX.iso";
+                    lblIso.Visible = false;
+                    lblUrl.Text = "https://sourceforge.net/projects/alien-os-nano/files/Alien-OS%20nano%20MX/Alien-OS_nano_MX.iso/download";
+                    break;
+                case "97":
+                    lblId.Text = "IMAGE ID: 97";
+                    lblId.Visible = false;
+                    lblIso.Text = @"c:\iso\tuxlinux2004-mate.iso";
+                    lblIso.Visible = false;
+                    lblUrl.Text = "https://sourceforge.net/projects/tux-linux/files/Tux%20Linux%2020.04%20-%20x64/MATE/tuxlinux2004-mate.iso/download";
+                    break;
+                case "98":
+                    lblId.Text = "IMAGE ID: 98";
+                    lblId.Visible = false;
+                    lblIso.Text = @"c:\iso\BlackWeb-Trinity.3.10-amd64.iso";
+                    lblIso.Visible = false;
+                    lblUrl.Text = "https://blackweb-security.org/download/BlackWeb-Trinity.3.10-amd64.iso";
+                    break;
+                case "99":
+                    lblId.Text = "IMAGE ID: 99";
+                    lblId.Visible = false;
+                    lblIso.Text = @"c:\iso\DarkOs-OneHell-v9.11.0-x86_64.iso";
+                    lblIso.Visible = false;
+                    lblUrl.Text = "https://sourceforge.net/projects/darkos-arch/files/latest/download";
+                    break;
+                case "100":
+                    lblId.Text = "IMAGE ID: 100";
+                    lblId.Visible = false;
+                    lblIso.Text = @"c:\iso\PlagueOS-R2.iso";
+                    lblIso.Visible = false;
+                    lblUrl.Text = "https://git.envs.net/WhichDoc/plagueOS_ISO/raw/branch/master/PlagueOS-R2.iso";
+                    break;
                 default:
                     break;
             }
@@ -1390,6 +1453,69 @@ namespace WinFormsDistroboot
                                 lblIso.Text = @"c:\iso\ACCCoco.iso";
                                 lblIso.Visible = false;
                                 lblUrl.Text = "https://sourceforge.net/projects/accessible-coconut/files/latest/download";
+                                break;
+                            case "92":
+                                lblId.Text = "IMAGE ID: 92";
+                                lblId.Visible = false;
+                                lblIso.Text = @"c:\iso\Drauger_OS-7.6-AMD64.iso";
+                                lblIso.Visible = false;
+                                lblUrl.Text = "https://download-optimizer.draugeros.org/ISOs/Drauger_OS-7.6-AMD64.iso";
+                                break;
+                            case "93":
+                                lblId.Text = "IMAGE ID: 93";
+                                lblId.Visible = false;
+                                lblIso.Text = @"c:\iso\Techrich-Crypto-Disc-Bullrun-21777.iso";
+                                lblIso.Visible = false;
+                                lblUrl.Text = "https://cryptocurrencyos.org/downloads/Techrich-Crypto-Disc-Bullrun-21777.iso";
+                                break;
+                            case "94":
+                                lblId.Text = "IMAGE ID: 94";
+                                lblId.Visible = false;
+                                lblIso.Text = @"c:\iso\aos-beta-3.1-x86_64.iso";
+                                lblIso.Visible = false;
+                                lblUrl.Text = "https://sourceforge.net/projects/allegianceos/files/ISOs/aos-beta-3.1-x86_64.iso/download";
+                                break;
+                            case "95":
+                                lblId.Text = "IMAGE ID: 95";
+                                lblId.Visible = false;
+                                lblIso.Text = @"c:\iso\StormOS_KDE-2023.02.24-x86_64.iso";
+                                lblIso.Visible = false;
+                                lblUrl.Text = "https://sourceforge.net/projects/hackman-linux/files/2022/kde/StormOS_KDE-2023.02.24-x86_64.iso/download";
+                                break;
+                            case "96":
+                                lblId.Text = "IMAGE ID: 96";
+                                lblId.Visible = false;
+                                lblIso.Text = @"c:\iso\Alien-OS_nano_MX.iso";
+                                lblIso.Visible = false;
+                                lblUrl.Text = "https://sourceforge.net/projects/alien-os-nano/files/Alien-OS%20nano%20MX/Alien-OS_nano_MX.iso/download";
+                                break;
+                            case "97":
+                                lblId.Text = "IMAGE ID: 97";
+                                lblId.Visible = false;
+                                lblIso.Text = @"c:\iso\tuxlinux2004-mate.iso";
+                                lblIso.Visible = false;
+                                lblUrl.Text = "https://sourceforge.net/projects/tux-linux/files/Tux%20Linux%2020.04%20-%20x64/MATE/tuxlinux2004-mate.iso/download";
+                                break;
+                            case "98":
+                                lblId.Text = "IMAGE ID: 98";
+                                lblId.Visible = false;
+                                lblIso.Text = @"c:\iso\BlackWeb-Trinity.3.10-amd64.iso";
+                                lblIso.Visible = false;
+                                lblUrl.Text = "https://blackweb-security.org/download/BlackWeb-Trinity.3.10-amd64.iso";
+                                break;
+                            case "99":
+                                lblId.Text = "IMAGE ID: 99";
+                                lblId.Visible = false;
+                                lblIso.Text = @"c:\iso\DarkOs-OneHell-v9.11.0-x86_64.iso";
+                                lblIso.Visible = false;
+                                lblUrl.Text = "https://sourceforge.net/projects/darkos-arch/files/latest/download";
+                                break;
+                            case "100":
+                                lblId.Text = "IMAGE ID: 100";
+                                lblId.Visible = false;
+                                lblIso.Text = @"c:\iso\PlagueOS-R2.iso";
+                                lblIso.Visible = false;
+                                lblUrl.Text = "https://git.envs.net/WhichDoc/plagueOS_ISO/raw/branch/master/PlagueOS-R2.iso";
                                 break;
                             default:
                                 break;
