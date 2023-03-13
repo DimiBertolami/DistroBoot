@@ -1,5 +1,5 @@
 # DistroBoot
-this time written in windows forms.
+this time written in windows forms ASYNCHRONOUSLY (meaning gui won't block on user actions anymore)!
 
 [![Download Distro-Boot](https://a.fsdn.com/con/app/sf-download-button)](https://sourceforge.net/projects/distroboot/files/latest/download)
 
